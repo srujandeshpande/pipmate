@@ -6,7 +6,7 @@ class ConvCommand(Command):
     """
     Generate new file from donor file
 
-    gen
+    transform
         {name? : Which file do we start from?}
         {destination? : And where should the new file be placed?}
         {--p|poetry : If set, a pyproject.toml will be created}
