@@ -1,6 +1,7 @@
 from cleo import Command
 from parser import parse
 
+
 class ConvCommand(Command):
     """
     Generate new file from donor file
@@ -15,23 +16,32 @@ class ConvCommand(Command):
 
     def handle(self):
         opt = 0
-        file_name = self.argument('name')
+        file_name = self.argument("name")
 
-        if file_name:
-            text = 'Hello {}'.format(file_name)
-        else:
-            text = 'Hello'
-
-        if self.option('poetry'):
+        if self.option("poetry"):
             opt = 1
 
-        elif self.option('pipfile'):
+        elif self.option("pipfile"):
             opt = 2
 
-        elif self.option('requirements'):
+        elif self.option("requirements"):
             opt = 3
 
-        if(opt):
-            parse(file_name,opt)
+        if file_name:
+            pass
         else:
-            self.line("A destination file option has to be provided! Check help for more details")
+            self.line("A source file has to be provided! Check help for more details")
+            exit()
+
+        if opt:
+            v = parse(file_name, opt)
+            if v == -1:
+                self.line("Invalid file name or extension")
+                exit()
+            elif v == -2:
+                self.line("Can't have the same source and destination type")
+                exit()
+        else:
+            self.line(
+                "A destination file option has to be provided! Check help for more details"
+            )
