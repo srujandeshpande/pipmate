@@ -1,3 +1,6 @@
+from .pyproject_parse import pyproject_parse
+from .pipfile_parse import pipfile_parse
+
 def parse(name, dopt):
     sopt = 0
     if name[-14:] == "pyproject.toml":
@@ -11,4 +14,13 @@ def parse(name, dopt):
 
     if sopt == dopt:
         return -2
+
+    with open(name) as file:
+        data = file.read()
+
+    if(sopt == 1):
+        parsed_data = pyproject_parse(data)
+    elif(sopt == 2):
+        parsed_data = pipfile_parse(data)
+
     print(name, dopt, sopt)

@@ -1,5 +1,5 @@
 from cleo import Command
-from parser import parse
+from parse.parser import parse
 
 
 class ConvCommand(Command):
