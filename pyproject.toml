@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "pipmate"
+version = "0.1.0"
+description = "Easily shift between pipfiles, pyproject.toml and requirement.txt"
+authors = ["Srujan Deshpande"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
