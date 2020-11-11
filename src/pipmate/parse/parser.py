@@ -1,5 +1,6 @@
-from .pyproject_parse import pyproject_parse
-from .pipfile_parse import pipfile_parse
+from .pyproject_decode import pyproject_decode
+from .pipfile_decode import pipfile_decode
+from .requirements_decode import requirements_decode
 
 def parse(name, dopt):
     sopt = 0
@@ -19,8 +20,10 @@ def parse(name, dopt):
         data = file.read()
 
     if(sopt == 1):
-        parsed_data = pyproject_parse(data)
+        parsed_data = pyproject_decode(data)
     elif(sopt == 2):
-        parsed_data = pipfile_parse(data)
+        parsed_data = pipfile_decode(data)
+    elif(sopt == 3):
+        parsed_data = requirements_decode(data)
 
-    print(name, dopt, sopt)
+    print(parsed_data)
